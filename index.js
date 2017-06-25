@@ -17,7 +17,18 @@ const observer = {
 
 
 function startReceivingData(observer) {
+    let counts = 0;
+    let intervalId;
 
+    intervalId = setInterval(() => {
+        counts++;
+        observer.next(counts);
+
+        if (counts > 5) {
+            clearInterval(intervalId);
+            observer.complete();
+        }
+    }, 300);
 }
 
 
