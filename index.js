@@ -14,13 +14,16 @@ const observer = {
     }
 };
 
-
-const arrayObservable = {
-    subscribe: function startReceivingData(obs) {
-        [1, 2, 5, 99, 88, 7].forEach(obs.next);
-        obs.complete();
+function createObservable(subscribeFn) {
+    return {
+        subscribe: subscribeFn
     }
-};
+}
+
+const arrayObservable = createObservable(function startReceivingData(obs) {
+    [1, 2, 5, 99, 88, 7].forEach(obs.next);
+    obs.complete();
+});
 
 
 arrayObservable.subscribe(observer);
