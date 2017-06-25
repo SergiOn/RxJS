@@ -25,8 +25,23 @@ function mapFn(transformationFn) {
     });
 }
 
+function filterFn(conditionFn) {
+    return createObservable((obs) => {
+        this.subscribe({
+            next: (x) => {
+                if (conditionFn(x)) {
+                    obs.next(x);
+                }
+            },
+            complete: () => obs.complete(),
+            error: (error) => obs.error(error)
+        });
+    });
+}
+
 function createObservable(subscribeFn) {
     return {
+        filter: filterFn,
         map: mapFn,
         subscribe: subscribeFn
     }
@@ -39,5 +54,6 @@ const arrayObservable = createObservable(function startReceivingData(obs) {
 
 
 arrayObservable
+    .filter((x) => x % 2)
     .map((x) => x * 10)
     .subscribe(observer);
