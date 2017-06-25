@@ -14,8 +14,20 @@ const observer = {
     }
 };
 
+function mapFn(transformationFn) {
+    const inputObservable = this;
+    return createObservable((obs) => {
+        inputObservable.subscribe({
+            next: (x) => obs.next(transformationFn(x)),
+            complete: () => obs.complete(),
+            error: (error) => obs.error(error)
+        });
+    });
+}
+
 function createObservable(subscribeFn) {
     return {
+        map: mapFn,
         subscribe: subscribeFn
     }
 }
@@ -26,4 +38,6 @@ const arrayObservable = createObservable(function startReceivingData(obs) {
 });
 
 
-arrayObservable.subscribe(observer);
+arrayObservable
+    .map((x) => x * 10)
+    .subscribe(observer);
