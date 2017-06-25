@@ -15,21 +15,22 @@ const observer = {
 };
 
 
+const observable = {
+    startReceivingData: function startReceivingData(observer) {
+        let counts = 0;
+        let intervalId;
 
-function startReceivingData(observer) {
-    let counts = 0;
-    let intervalId;
+        intervalId = setInterval(() => {
+            counts++;
+            observer.next(counts);
 
-    intervalId = setInterval(() => {
-        counts++;
-        observer.next(counts);
-
-        if (counts > 5) {
-            clearInterval(intervalId);
-            observer.complete();
-        }
-    }, 300);
-}
+            if (counts > 5) {
+                clearInterval(intervalId);
+                observer.complete();
+            }
+        }, 300);
+    }
+};
 
 
-startReceivingData(observer);
+observable.startReceivingData(observer);
