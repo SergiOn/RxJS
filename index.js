@@ -19,8 +19,11 @@ function errorCallback(err) {
 // }
 
 function startReceivingData(next, complete) {
-    document.addEventListener('click', next);
-    complete();
+    // document.addEventListener('click', next);
+    document.addEventListener('click', (e) => {
+        next(e);
+        complete();
+    });
 }
 
 
