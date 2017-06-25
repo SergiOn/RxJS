@@ -12,19 +12,27 @@ function errorCallback(err) {
     console.log('Error:', err);
 }
 
-
-// function startReceivingData(next, complete) {
+// array
+// function startReceivingData(next, error, complete) {
 //     [1, 2, 3, 4, 5].forEach(next);
 //     complete();
 // }
 
-function startReceivingData(next, complete) {
-    // document.addEventListener('click', next);
-    document.addEventListener('click', (e) => {
-        next(e);
-        complete();
-    });
+// event
+// function startReceivingData(next, error, complete) {
+//     // document.addEventListener('click', next);
+//     document.addEventListener('click', (e) => {
+//         next(e);
+//         complete();
+//     });
+// }
+
+// promises
+function startReceivingData(next, error, complete) {
+    fetch('http://api.github.com')
+        .then((res) => res.json(), error)
+        .then(next, error);
 }
 
 
-startReceivingData(nextCallback, completeCallback, errorCallback);
+startReceivingData(nextCallback, errorCallback, completeCallback);
