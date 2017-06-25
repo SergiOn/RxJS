@@ -28,10 +28,17 @@ function errorCallback(err) {
 // }
 
 // promises
+// function startReceivingData(next, error, complete) {
+//     fetch('http://api.github.com')
+//         .then((res) => res.json(), error)
+//         .then(next, error);
+// }
+
+// stream
 function startReceivingData(next, error, complete) {
-    fetch('http://api.github.com')
-        .then((res) => res.json(), error)
-        .then(next, error);
+    setInterval(() => {
+        next('tick');
+    }, 300);
 }
 
 
