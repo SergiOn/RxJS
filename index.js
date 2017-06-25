@@ -36,8 +36,17 @@ function errorCallback(err) {
 
 // stream
 function startReceivingData(next, error, complete) {
-    setInterval(() => {
-        next('tick');
+    let counts = 0;
+    let intervalId;
+
+    intervalId = setInterval(() => {
+        counts++;
+        next(counts);
+
+        if (counts > 5) {
+            clearInterval(intervalId);
+            complete();
+        }
     }, 300);
 }
 
