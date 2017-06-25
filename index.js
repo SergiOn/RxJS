@@ -1,21 +1,24 @@
 "use strict";
 
-function nextCallback(data) {
-    console.log(data);
+const observer = {
+    next: function nextCallback(data) {
+        console.log(data);
+    },
+
+    complete: function completeCallback() {
+        console.log('Done');
+    },
+
+    error: function errorCallback(err) {
+        console.log('Error:', err);
+    }
+};
+
+
+
+function startReceivingData(observer) {
+
 }
 
-function completeCallback() {
-    console.log('Done');
-}
 
-function errorCallback(err) {
-    console.log('Error:', err);
-}
-
-
-function startReceivingData(next, error, complete) {
-
-}
-
-
-startReceivingData(nextCallback, errorCallback, completeCallback);
+startReceivingData(observer);
