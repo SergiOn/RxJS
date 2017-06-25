@@ -1,0 +1,20 @@
+{
+  "name": "rxjs",
+  "version": "1.0.0",
+  "description": "Create your rxjs library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SergiOn/RxJS.git"
+  },
+  "author": "SergiOn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SergiOn/RxJS/issues"
+  },
+  "homepage": "https://github.com/SergiOn/RxJS#readme"
+}
