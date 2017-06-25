@@ -13,8 +13,13 @@ function errorCallback(err) {
 }
 
 
+// function startReceivingData(next, complete) {
+//     [1, 2, 3, 4, 5].forEach(next);
+//     complete();
+// }
+
 function startReceivingData(next, complete) {
-    [1, 2, 3, 4, 5].forEach(next);
+    document.addEventListener('click', next);
     complete();
 }
 
