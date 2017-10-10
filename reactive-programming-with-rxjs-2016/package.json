@@ -1,0 +1,25 @@
+{
+  "name": "reactive-programming-with-rxjs-2016",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "rxjs-es": "^5.0.0-beta.12",
+    "rx": "^4.1.0",
+    "rxjs": "^5.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SergiOn/RxJS.git"
+  },
+  "author": "SergiOn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SergiOn/RxJS/issues"
+  },
+  "homepage": "https://github.com/SergiOn/RxJS#readme"
+}
