@@ -1,21 +1,32 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     context: __dirname,
-    entry: path.join(__dirname, 'src', 'index.js'),
+    entry: [
+        'webpack-dev-server/client?http://localhost:9000',
+        // 'webpack/hot/dev-server',
+        path.join(__dirname, 'src', 'index.js')
+    ],
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'bundle.js'
     },
 
     plugins: [
-        new webpack.NamedModulesPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'RxJS',
+            filename: 'index.html'
+        }),
+        // new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ],
 
     devServer: {
         port: 9000,
-        hot: true
+        hot: true,
+        // contentBase: './'
+        // open: true
     }
 };
